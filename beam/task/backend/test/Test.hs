@@ -251,7 +251,7 @@ main = do
           -- All tasks should have the result of the work set, as Just True
           -- Each task should have been checked out at some time, with an entry in the map
           -- Each task should have been checked out only once.
-          threadDelay $ (taskCount * timeForOneTask) `div` threadCount
+          threadDelay $ (taskCount * timeForOneTask * 2) `div` threadCount
           taskMap <- readIORef mapRef
           tasks <- allTestTasks c
           map _testTaskT_checkedOutBy tasks `shouldBe` replicate taskCount Nothing
